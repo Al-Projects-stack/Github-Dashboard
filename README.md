@@ -3,7 +3,7 @@
 
 A client-side GitHub profile dashboard. Enter any username and instantly see their repos, stars, forks, top languages, and best repositories — all pulled live from the GitHub public API with no backend.
 
-**Live:** https://github-dashboard-xxxx.onrender.com
+**Live:** https://github-dashboard-jbpu.onrender.com
 
 ---
 
