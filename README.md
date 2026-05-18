@@ -1,4 +1,5 @@
 # GitScope — GitHub Analytics Dashboard
+<img width="1872" height="921" alt="image" src="https://github.com/user-attachments/assets/471bc596-1293-4dc2-a76d-227c5188795a" />
 
 A client-side GitHub profile dashboard. Enter any username and instantly see their repos, stars, forks, top languages, and best repositories — all pulled live from the GitHub public API with no backend.
 
