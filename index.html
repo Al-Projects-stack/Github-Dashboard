@@ -210,6 +210,61 @@
     }
     .error-banner.visible { display: block; }
 
+    /* Landing Section */
+    .landing {
+      max-width: 860px; margin: 0 auto 4rem; text-align: center;
+      transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+    }
+    .landing.fade-out { opacity: 0; transform: translateY(-12px); pointer-events: none; }
+    .landing.hidden { display: none; }
+
+    .landing-headline {
+      font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; letter-spacing: -0.03em;
+      margin-bottom: 0.75rem; line-height: 1.2;
+    }
+    .landing-headline span { color: var(--accent); }
+    .landing-sub {
+      font-size: 1rem; color: var(--text-muted); max-width: 560px; margin: 0 auto 3rem;
+      line-height: 1.6;
+    }
+
+    .feature-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem; margin-bottom: 3rem; text-align: left;
+    }
+    .feature-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.25rem; transition: border-color 0.2s, transform 0.2s var(--ease-out);
+    }
+    .feature-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .feature-icon { font-size: 1.4rem; margin-bottom: 0.6rem; }
+    .feature-title { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.3rem; }
+    .feature-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+
+    .how-it-works { text-align: left; }
+    .how-label {
+      font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem;
+    }
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1rem 0; border-bottom: 1px solid var(--border);
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent);
+      background: var(--accent-dim); border: 1px solid var(--accent);
+      width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0; margin-top: 2px;
+    }
+    .step-title { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.2rem; }
+    .step-detail { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+    .step-detail code {
+      font-family: var(--font-mono); font-size: 0.75rem; background: var(--surface-hover);
+      padding: 0.1rem 0.4rem; border-radius: 3px; color: var(--text);
+    }
+
     /* Utilities */
     .hidden { display: none !important; }
     .shake { animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both; }
@@ -242,6 +297,61 @@
           <span>Search</span>
         </button>
       </form>
+    </section>
+
+    <section class="landing" id="landing">
+      <h1 class="landing-headline">Explore any GitHub profile.<br><span>Instantly.</span></h1>
+      <p class="landing-sub">Enter a username and get a complete breakdown of their repositories, languages, stars, and activity — no account, no API key, no backend.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">👤</div>
+          <div class="feature-title">Profile Overview</div>
+          <div class="feature-desc">Avatar, bio, follower count, following, and total public repos at a glance.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⭐</div>
+          <div class="feature-title">Star Totals</div>
+          <div class="feature-desc">Aggregated star count across all non-forked repositories.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <div class="feature-title">Language Breakdown</div>
+          <div class="feature-desc">Visual bar chart of the languages used most across their repositories.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📦</div>
+          <div class="feature-title">Top Repositories</div>
+          <div class="feature-desc">Up to 12 repositories sorted by stars, with descriptions and metadata.</div>
+        </div>
+      </div>
+
+      <div class="how-it-works">
+        <div class="how-label">How it works</div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div>
+              <div class="step-title">Enter a GitHub username</div>
+              <div class="step-detail">Any public GitHub account works. No authentication required.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div>
+              <div class="step-title">Browser calls the GitHub API directly</div>
+              <div class="step-detail">Two requests are made: <code>api.github.com/users/{username}</code> for the profile and <code>/repos</code> for the repository list. No server in the middle.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div>
+              <div class="step-title">Data is processed and rendered client-side</div>
+              <div class="step-detail">JavaScript sums stars, counts languages, sorts repositories, and builds the dashboard — entirely in your browser.</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <div class="error-banner" id="error-banner"></div>
@@ -318,6 +428,7 @@
     const usernameInput = document.getElementById('username-input');
     const searchBtn = document.getElementById('search-btn');
     const dashboard = document.getElementById('dashboard');
+    const landing = document.getElementById('landing');
     const errorBanner = document.getElementById('error-banner');
     const loading = document.getElementById('loading');
     const loadingText = document.getElementById('loading-text');
@@ -411,6 +522,8 @@
       setLoading(true, `Fetching profile for @${username}...`);
       dashboard.classList.remove('visible');
       errorBanner.classList.remove('visible');
+      landing.classList.add('fade-out');
+      setTimeout(() => landing.classList.add('hidden'), 300);
 
       try {
         // Fetch profile
