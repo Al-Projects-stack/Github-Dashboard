@@ -1,7 +1,7 @@
 # GitScope - GitHub Analytics Dashboard
 <img width="1872" height="921" alt="image" src="https://github.com/user-attachments/assets/471bc596-1293-4dc2-a76d-227c5188795a" />
 
-A client-side GitHub profile dashboard. Enter any username and instantly see their repos, stars, forks, top languages, and best repositories — all pulled live from the GitHub public API with no backend.
+A client-side GitHub profile dashboard. Enter any username and instantly see their repos, stars, forks, top languages, and best repositories all pulled live from the GitHub public API with no backend.
 
 **Live:** https://github-dashboard-jbpu.onrender.com
 
@@ -13,7 +13,7 @@ A client-side GitHub profile dashboard. Enter any username and instantly see the
 - Displays follower/following counts, total stars, and repo count
 - Language distribution chart (by repository count)
 - Top repositories sorted by stars with descriptions and metadata
-- Rate limit awareness — shows when limits reset
+- Rate limit awareness shows when limits reset
 
 ## How it works
 
@@ -24,7 +24,7 @@ https://api.github.com/users/{username}
 https://api.github.com/users/{username}/repos
 ```
 
-JavaScript processes the JSON response — sums stars, counts languages, sorts repos — and renders the UI. No server required for public profile data.
+JavaScript processes the JSON response sums stars, counts languages, sorts repos and renders the UI. No server required for public profile data.
 
 ## Running locally
 
@@ -47,4 +47,4 @@ GitHub allows 60 unauthenticated API requests per hour per IP. More than enough 
 
 ## Deploy
 
-Deployed as a static site on Render via `render.yaml`. Any static host (Netlify, Vercel, GitHub Pages) works too — just serve `index.html`.
+Deployed as a static site on Render via `render.yaml`. Any static host (Netlify, Vercel, GitHub Pages) works too just serve `index.html`.
