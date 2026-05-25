@@ -48,3 +48,9 @@ GitHub allows 60 unauthenticated API requests per hour per IP. More than enough 
 ## Deploy
 
 Deployed as a static site on Render via `render.yaml`. Any static host (Netlify, Vercel, GitHub Pages) works too just serve `index.html`.
+
+## What I Learned
+
+- Consuming a public REST API entirely from the browser with no backend, and how CORS works differently for public vs authenticated endpoints
+- Aggregating language stats and sorting repos by stars in vanilla JS without any utility libraries or build step
+- How GitHub API rate limiting works (60 unauthenticated requests per hour) and how to surface the reset time when the limit is hit
